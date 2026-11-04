@@ -14,11 +14,11 @@ export default function Logo({ className }: LogoProps) {
       aria-label="LightBridge Foundation, home"
       className={cn('flex items-center gap-3', className)}
     >
-      <span className="flex items-center">
+      <span className="flex h-16 w-[86px] items-center justify-center overflow-hidden">
         <img
-          src="/images/uploads/img-6592-2b9a9d.jpg"
+          src="/images/uploads/lightbridge-profile-picture-047ffd.png"
           alt="LightBridge Foundation logo"
-          className="h-16 w-auto object-contain"
+          className="h-full w-full scale-[1.4] object-cover"
         />
       </span>
     </Link>

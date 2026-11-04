@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { HeartHandshake, X } from 'lucide-react'
 import { useDonate } from '@/context/DonateContext'
+import { STRIPE_LINKS } from '@/lib/donate-links'
 
 const AMOUNTS = ['$20', '$50', '$100', '$150']
-
-const MAILTO =
-  'mailto:info@lightbridgefoundation.org.au?subject=Donation%20to%20LightBridge%20Foundation'
 
 export default function DonateModal() {
   const { isDonateOpen, closeDonate } = useDonate()
@@ -102,25 +100,26 @@ export default function DonateModal() {
 
               <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {AMOUNTS.map((amount) => (
-                  <div
+                  <a
                     key={amount}
-                    className="rounded-xl bg-gold-100 px-4 py-3 text-center"
+                    href={STRIPE_LINKS[amount]}
+                    className="rounded-xl bg-gold-100 px-4 py-3 text-center transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400/40 hover:shadow-card focus-visible:outline-2 focus-visible:outline-gold-500"
                   >
                     <div className="font-fraunces text-xl font-bold text-navy-800">
                       {amount}
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
               <p className="mt-3 text-center text-[0.85rem] font-medium leading-snug text-grey-500">
-                One-time or monthly, every amount helps.
+                Secure card payment via Stripe. Every amount helps.
               </p>
 
               <a
-                href={MAILTO}
+                href={STRIPE_LINKS.custom}
                 className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gold-500 px-8 py-3.5 font-inter text-[0.95rem] font-semibold tracking-[0.01em] text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-gold-glow active:scale-[0.97]"
               >
-                Donate Today
+                Donate a custom amount
               </a>
               <p className="mt-4 text-center text-[0.85rem] font-medium leading-[1.5] text-grey-500">
                 LightBridge Foundation is 100% volunteer-run, every dollar goes

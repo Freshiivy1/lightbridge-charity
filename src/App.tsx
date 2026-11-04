@@ -7,6 +7,7 @@ import Programs from '@/pages/Programs'
 import GetInvolved from '@/pages/GetInvolved'
 import News from '@/pages/News'
 import Contact from '@/pages/Contact'
+import DonationSuccess from '@/pages/DonationSuccess'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/donation-success" element={<DonationSuccess />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Layout>

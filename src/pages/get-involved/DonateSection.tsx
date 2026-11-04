@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Gift, Heart } from 'lucide-react'
-import { useDonate } from '@/context/DonateContext'
+import { STRIPE_LINKS, STRIPE_LINKS_MONTHLY } from '@/lib/donate-links'
 import { cn } from '@/lib/utils'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
@@ -16,9 +16,11 @@ const FREQUENCIES: { value: Frequency; label: string }[] = [
 const CHIPS: string[] = ['$20', '$50', '$100', '$150', 'Other']
 
 export default function DonateSection() {
-  const { openDonate } = useDonate()
   const [selected, setSelected] = useState('$50')
   const [frequency, setFrequency] = useState<Frequency>('one-time')
+
+  const links = frequency === 'monthly' ? STRIPE_LINKS_MONTHLY : STRIPE_LINKS
+  const donateUrl = links[selected === 'Other' ? 'custom' : selected]
 
   return (
     <section
@@ -170,14 +172,13 @@ export default function DonateSection() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.6 }}
           >
-            <button
-              type="button"
-              onClick={openDonate}
+            <a
+              href={donateUrl}
               className="mt-10 inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-500 px-10 py-4 font-inter text-[1.05rem] font-semibold tracking-[0.01em] text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-gold-glow active:scale-[0.97]"
             >
               <Heart className="h-5 w-5" aria-hidden="true" />
               {frequency === 'monthly' ? 'Give Monthly' : 'Donate Today'}
-            </button>
+            </a>
           </motion.div>
 
           <motion.p

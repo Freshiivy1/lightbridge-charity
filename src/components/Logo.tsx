@@ -16,7 +16,7 @@ export default function Logo({ className }: LogoProps) {
     >
       <span className="block h-16 w-16">
         <img
-          src="/images/uploads/lightbridge-logo-white-gold-a665a0.webp"
+          src="/images/uploads/lightbridge-logo-white-gold-2-eaa826.webp"
           alt="LightBridge Foundation logo"
           className="block h-full w-full object-contain"
         />

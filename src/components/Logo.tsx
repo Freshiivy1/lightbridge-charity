@@ -14,7 +14,7 @@ export default function Logo({ className }: LogoProps) {
       aria-label="LightBridge Foundation, home"
       className={cn('flex shrink-0 items-center', className)}
     >
-      <span className="block h-16 w-16">
+      <span className="block h-20 w-20">
         <img
           src="/images/uploads/lightbridge-logo-white-gold-2-eaa826.webp"
           alt="LightBridge Foundation logo"

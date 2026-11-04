@@ -54,7 +54,7 @@ export default function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[72px] w-full max-w-container items-center justify-between px-6 lg:px-12"
+        className="mx-auto flex h-[84px] w-full max-w-container items-center justify-between px-6 lg:px-12"
       >
         <Logo reversed />
 
@@ -128,7 +128,7 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-navy-900 lg:hidden"
+            className="fixed inset-0 top-[84px] z-40 overflow-y-auto bg-navy-900 lg:hidden"
             initial={{ clipPath: 'circle(0% at calc(100% - 60px) 40px)' }}
             animate={{ clipPath: 'circle(150% at calc(100% - 60px) 40px)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 60px) 40px)' }}

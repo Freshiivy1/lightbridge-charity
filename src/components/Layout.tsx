@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import DonateModal from '@/components/DonateModal'
+import ThankYouModal from '@/components/ThankYouModal'
 
 /**
  * Shared site shell (children pattern, wraps <Routes> in App.tsx).
@@ -49,6 +50,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </main>
       <Footer />
       <DonateModal />
+      <ThankYouModal />
     </div>
   )
 }

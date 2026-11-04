@@ -14,24 +14,17 @@ export default function Logo({ reversed = false, className }: LogoProps) {
       aria-label="LightBridge Foundation, home"
       className={cn('flex items-center gap-3', className)}
     >
-      <img
-        src="/logo-badge.png"
-        alt=""
-        className="h-10 w-auto object-contain"
-        aria-hidden="true"
-      />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            'font-fraunces text-[1.35rem] font-semibold tracking-[-0.02em]',
-            reversed ? 'text-white' : 'text-navy-800',
-          )}
-        >
-          LightBridge
-        </span>
-        <span className="mt-1 font-inter text-[0.62rem] font-bold uppercase tracking-[0.32em] text-gold-500">
-          Foundation
-        </span>
+      <span
+        className={cn(
+          'flex items-center',
+          reversed && 'rounded-xl bg-white px-2 py-1 shadow-card',
+        )}
+      >
+        <img
+          src="/images/uploads/img-6592-2b9a9d.jpg"
+          alt="LightBridge Foundation logo"
+          className="h-14 w-auto object-contain"
+        />
       </span>
     </Link>
   )

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { HeartHandshake, X } from 'lucide-react'
+import { HeartHandshake, Lock, X } from 'lucide-react'
 import { useDonate } from '@/context/DonateContext'
+import { DONATION_MAILTO, STRIPE_DONATION_LINK } from '@/lib/donate'
 
 const AMOUNTS = ['$20', '$50', '$100', '$150']
 
-const MAILTO =
-  'mailto:info@lightbridgefoundation.org.au?subject=Donation%20to%20LightBridge%20Foundation'
+const DONATE_HREF = STRIPE_DONATION_LINK || DONATION_MAILTO
 
 export default function DonateModal() {
   const { isDonateOpen, closeDonate } = useDonate()
@@ -113,15 +113,31 @@ export default function DonateModal() {
                 ))}
               </div>
               <p className="mt-3 text-center text-[0.85rem] font-medium leading-snug text-grey-500">
-                One-time or monthly, every amount helps.
+                {STRIPE_DONATION_LINK
+                  ? 'Suggested amounts. You can enter any amount you like on the next, secure page.'
+                  : 'One-time or monthly, every amount helps.'}
               </p>
 
               <a
-                href={MAILTO}
+                href={DONATE_HREF}
                 className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gold-500 px-8 py-3.5 font-inter text-[0.95rem] font-semibold tracking-[0.01em] text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-gold-glow active:scale-[0.97]"
               >
-                Donate Today
+                {STRIPE_DONATION_LINK && <Lock className="h-4 w-4" aria-hidden="true" />}
+                {STRIPE_DONATION_LINK ? 'Donate Securely' : 'Donate Today'}
               </a>
+              {STRIPE_DONATION_LINK && (
+                <p className="mt-3 text-center text-[0.8rem] font-medium leading-[1.5] text-grey-500">
+                  Payments are processed securely by Stripe. Prefer to give
+                  monthly?{' '}
+                  <a
+                    href={DONATION_MAILTO}
+                    className="font-semibold text-navy-800 underline underline-offset-2 hover:text-gold-500"
+                  >
+                    Email us
+                  </a>
+                  .
+                </p>
+              )}
               <p className="mt-4 text-center text-[0.85rem] font-medium leading-[1.5] text-grey-500">
                 LightBridge Foundation is 100% volunteer-run, every dollar goes
                 directly to charitable programs.

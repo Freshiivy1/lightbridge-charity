@@ -7,23 +7,18 @@ interface LogoProps {
   className?: string
 }
 
-export default function Logo({ reversed = false, className }: LogoProps) {
+export default function Logo({ className }: LogoProps) {
   return (
     <Link
       to="/"
       aria-label="LightBridge Foundation, home"
       className={cn('flex items-center gap-3', className)}
     >
-      <span
-        className={cn(
-          'flex items-center',
-          reversed && 'rounded-xl bg-white px-2 py-1 shadow-card',
-        )}
-      >
+      <span className="flex items-center">
         <img
           src="/images/uploads/img-6592-2b9a9d.jpg"
           alt="LightBridge Foundation logo"
-          className="h-14 w-auto object-contain"
+          className="h-16 w-auto object-contain"
         />
       </span>
     </Link>
